@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Потреба у дронах</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body id="droneNeedsPage">
+    <!-- Бокове меню -->
+    <nav class="sidebar">
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="drone-needs.html" class="active">Потреба у дронах</a></li>
+            <li><a href="suppliers.html">Постачальники</a></li>
+            <li><a href="inventory.html">Інвентар</a></li>
+            <li><a href="ready-drones.html">Готові дрони</a></li>
+            <li><a href="monthly-report.html">Місячний звіт</a></li>
+        </ul>
+    </nav>
+
+    <!-- Головний контент -->
+    <main class="content">
+        <h1>Потреба у дронах</h1>
+        <!-- Контейнер для форми додавання -->
+        <div id="formContainer"></div>
+        <!-- Контейнер для таблиці -->
+        <div class="table-container">
+            <table id="droneNeedsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Модель</th>
+                        <th>Дата здачі</th>
+                        <th>Характеристики</th>
+                        <th>Компоненти</th>
+                        <th>Хто працює</th>
+                        <th>Важливість</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Дані заповнюються динамічно -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
