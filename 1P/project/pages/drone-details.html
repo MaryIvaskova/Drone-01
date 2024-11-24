@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі дронів</title>
+    <link rel="stylesheet" href="/project/css/main.css">
+    <link rel="stylesheet" href="/project/css/drone-details.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <!-- Main Content -->
+        <main>
+            <div class="form-container">
+                <h2 id="form-title">Додати новий дрон</h2>
+                <form id="drone-form">
+                    <label for="drone-name">Назва дрону:</label>
+                    <input type="text" id="drone-name" placeholder="Введіть назву дрону" />
+            
+                    <label for="drone-description">Опис:</label>
+                    <textarea id="drone-description" placeholder="Введіть опис"></textarea>
+            
+                    <label for="drone-components">Компоненти (назва:ціна):</label>
+                    <input
+                        type="text"
+                        id="drone-components"
+                        placeholder="Наприклад: Мотор:150, Батарея:200"
+                    />
+            
+                    <label for="drone-deadline">Дата завершення:</label>
+                    <input type="date" id="drone-deadline" />
+            
+                    <button type="submit" id="save-button">Зберегти</button>
+                    <button type="button" id="cancel-edit-button" class="hidden">Скасувати</button>
+                </form>
+            </div>
+            
+            <table>
+                <tbody id="drones-table-body"></tbody>
+            </table>    <h1>Деталі дронів</h1>
+            <div class="drone-details">
+                <section class="drone-info">
+                    <h2 id="drone-name">Назва дрона</h2>
+                    <p id="drone-description">Опис дрона буде тут.</p>
+                    <ul id="drone-components">
+                        <li>Компонент 1: Мотор</li>
+                        <li>Компонент 2: Батарея</li>
+                        <li>Компонент 3: Контролер</li>
+                    </ul>
+                    <p>Собівартість: <span id="drone-cost">5000 UAH</span></p>
+                    <p>Дата завершення роботи: <span id="drone-deadline">2024-12-15</span></p>
+                </section>
+    
+                <section class="video-upload">
+                    <h3>Додати відео</h3>
+                    <form id="video-form">
+                        <input type="file" id="video-upload" accept="video/*">
+                        <button type="submit" class="btn">Завантажити</button>
+                    </form>
+            
+        </main>
+    </div>
+    <script src="/project/js/components/Sidebar.js"></script>
+    <script src="/project/js/pages/drone-details.js"></script>
+</body>
+</html>

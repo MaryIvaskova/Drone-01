@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Готові дрони</title>
+    <link rel="stylesheet" href="/project/css/main.css">
+    <link rel="stylesheet" href="/project/css/ready-drones.css">
+</head>
+<body>
+    <div class="sidebar">
+        <!-- Сідбар -->
+    </div>
+    <main>
+        <h1>Готові дрони</h1>
+        <div class="drones-container">
+            <!-- Форма додавання -->
+            <div id="add-drone-form" class="form-section hidden">
+                <h2>Додати новий дрон</h2>
+                <form id="drone-form" novalidate>
+                    <label for="drone-name">Назва дрона:</label>
+                    <input type="text" id="drone-name" placeholder="Назва дрона" required>
+
+                    <label for="drone-description">Опис:</label>
+                    <textarea id="drone-description" placeholder="Детальний опис" rows="4"></textarea>
+
+                    <label for="drone-components">Компоненти:</label>
+                    <select id="drone-components" multiple></select>
+
+                    <label for="drone-photo">Завантажити фото:</label>
+                    <input type="file" id="drone-photo" accept="image/*">
+
+                    <label for="completion-date">Дата завершення роботи:</label>
+                    <input type="date" id="completion-date" required>
+
+                    <button type="submit" class="btn">Додати</button>
+                    <button type="button" id="cancel-form" class="btn cancel">Скасувати</button>
+                </form>
+            </div>
+
+            <!-- Кнопка для відкриття форми -->
+            <button id="show-form-btn" class="btn">Додати дрон</button>
+
+            <!-- Таблиця -->
+            <table id="drones-table">
+                <thead>
+                    <tr>
+                        <th>Назва</th>
+                        <th>Опис</th>
+                        <th>Компоненти</th>
+                        <th>Собівартість</th>
+                        <th>Дата завершення</th>
+                        <th>Фото</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="drones-body">
+                    <!-- Динамічні дані -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="/project/js/pages/ready-drones.js"></script>
+    <script src="/project/js/components/Sidebar.js"></script>
+</body>
+</html>

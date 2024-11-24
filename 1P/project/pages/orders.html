@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замовлення</title>
+    <link rel="stylesheet" href="/project/css/main.css">
+    <link rel="stylesheet" href="/project/css/orders.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="header">
+                <h1>Замовлення</h1>
+            </header>
+
+            <!-- Форма для додавання -->
+            <section class="form-container">
+                <form id="order-form">
+                    <h2 id="form-title">Додати нове замовлення</h2>
+                    <div class="form-group">
+                        <label for="order-name">Назва</label>
+                        <input type="text" id="order-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-description">Опис</label>
+                        <textarea id="order-description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-date">Дата замовлення</label>
+                        <input type="date" id="order-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="arrival-date">Дата прибуття</label>
+                        <input type="date" id="arrival-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="order-quantity">Кількість</label>
+                        <input type="number" id="order-quantity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-price">Ціна (USD)</label>
+                        <input type="number" id="order-price" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-delivery-price">Ціна доставки (UAH)</label>
+                        <input type="number" id="order-delivery-price" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="postal-service">Поштова служба</label>
+                        <select id="postal-service" required>
+                            <option value="">Оберіть службу</option>
+                            <option value="Нова Пошта">Нова Пошта</option>
+                            <option value="Meest Express">Meest Express</option>
+                            <option value="Укрпошта">Укрпошта</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="shop-link">Лінк на магазин</label>
+                        <input type="url" id="shop-link">
+                    </div>
+                    <div class="form-group">
+                        <label for="backup-link">Запасний лінк</label>
+                        <input type="url" id="backup-link">
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-number">Номер накладної</label>
+                        <input type="text" id="invoice-number">
+                    </div>
+                    <div class="form-group">
+                        <label for="discount">Знижка (%)</label>
+                        <input type="number" id="discount" step="1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Зберегти</button>
+                    <button type="button" id="cancel-edit" class="btn btn-secondary hidden">Скасувати</button>
+                </form>
+            </section>
+
+            <!-- Таблиця замовлень -->
+            <section class="table-container">
+                <h2>Таблиця замовлень</h2>
+                <table id="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Вибір</th>
+                            <th>Дата замовлення</th>
+                            <th>Дата прибуття</th>
+                            <th>Назва</th>
+                            <th>Категорія</th>
+                            <th>Опис</th>
+                            <th>Кількість</th>
+                            <th>Ціна (USD)</th>
+                            <th>Ціна доставки (UAH)</th>
+                            <th>Поштова служба</th>
+                            <th>Лінк на магазин</th>
+                            <th>Запасний лінк</th>
+                            <th>Номер накладної</th>
+                            <th>Знижка</th>
+                            <th>Статус</th>
+                            <th>Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-body"></tbody>
+                </table>
+            </section>
+
+            <!-- Таблиця браку -->
+            <section class="table-container">
+                <h2>Брак</h2>
+                <table id="defect-table">
+                    <thead>
+                        <tr>
+                            <th>Дата замовлення</th>
+                            <th>Назва</th>
+                            <th>Категорія</th>
+                            <th>Опис</th>
+                            <th>Кількість</th>
+                            <th>Примітка</th>
+                        </tr>
+                    </thead>
+                    <tbody id="defect-body"></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="/project/js/components/Sidebar.js"></script>
+    <script src="/project/js/pages/orders.js"></script>
+</body>
+</html>

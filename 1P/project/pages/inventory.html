@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Інвентар</title>
+    <link rel="stylesheet" href="/project/css/main.css">
+    <link rel="stylesheet" href="/project/css/inventory.css">
+
+</head>
+<body>
+    <div class="sidebar">
+        <!-- Динамічний сідбар -->
+    </div>
+    <main>
+        <h1>Інвентар</h1>
+        <div class="inventory-container">
+            <!-- Форма для додавання елемента -->
+            <div id="add-item-form" class="form-section hidden">
+                <h2>Додати новий елемент</h2>
+                <form id="inventory-form">
+                    <label for="item-name">Назва:</label>
+                    <input type="text" id="item-name" placeholder="Назва елемента" required>
+
+                    <label for="item-quantity">Кількість:</label>
+                    <input type="number" id="item-quantity" placeholder="Кількість" required min="1">
+
+                    <label for="item-category">Категорія:</label>
+                    <select id="item-category">
+                        <option value="" disabled selected>Оберіть категорію</option>
+                        <!-- Динамічний список категорій -->
+                    </select>
+                    <input type="text" id="item-new-category" placeholder="Нова категорія">
+
+                    <label for="item-price">Ціна:</label>
+                    <input type="number" id="item-price" placeholder="Ціна" required>
+                    <select id="item-currency">
+                        <option value="USD">USD</option>
+                        <option value="UAH">UAH</option>
+                    </select>
+
+                    <button type="submit" class="btn">Додати</button>
+                    <button type="button" id="cancel-form" class="btn cancel">Скасувати</button>
+                </form>
+            </div>
+
+            <!-- Кнопка для відкриття форми -->
+            <button id="show-form-btn" class="btn">Додати елемент</button>
+
+            <!-- Таблиця інвентарю -->
+            <table id="inventory-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Назва</th>
+                        <th>Кількість</th>
+                        <th>Категорія</th>
+                        <th>Ціна (USD)</th>
+                        <th>Ціна (UAH)</th>
+                        <th>Сумарна вартість</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="inventory-body">
+                    <!-- Динамічні дані -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="/project/js/pages/inventory.js"></script>
+    <script src="/project/js/components/Sidebar.js"></script>
+
+</body>
+</html>

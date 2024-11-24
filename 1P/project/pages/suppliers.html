@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Постачальники</title>
+    <link rel="stylesheet" href="/project/css/main.css">
+    <link rel="stylesheet" href="/project/css/suppliers.css">
+</head>
+<body>
+    <div class="sidebar">
+        <!-- Динамічний сідбар -->
+    </div>
+    <main>
+        <h1>Постачальники</h1>
+        <div class="suppliers-container">
+            <!-- Форма для додавання -->
+            <div id="add-supplier-form" class="form-section hidden">
+                <h2>Додати нового постачальника</h2>
+                <form id="supplier-form" novalidate>
+                    <label for="supplier-name">Назва:</label>
+                    <input type="text" id="supplier-name" placeholder="Назва постачальника">
+
+                    <label for="supplier-contact">Контакти:</label>
+                    <input type="text" id="supplier-contact" placeholder="Телефон або Email">
+
+                    <label for="supplier-components">Компоненти:</label>
+                    <input type="text" id="supplier-components" placeholder="Компоненти через кому">
+
+                    <label for="supplier-links">Лінки на сайт:</label>
+                    <input type="text" id="supplier-links" placeholder="Лінки через кому">
+
+                    <label for="supplier-description">Опис:</label>
+                    <textarea id="supplier-description" placeholder="Додатковий опис" rows="4"></textarea>
+
+                    <button type="submit" class="btn">Додати</button>
+                    <button type="button" id="cancel-form" class="btn cancel">Скасувати</button>
+                </form>
+            </div>
+
+            <!-- Кнопка для відкриття форми -->
+            <button id="show-form-btn" class="btn">Додати постачальника</button>
+
+            <!-- Таблиця -->
+            <table id="suppliers-table">
+                <thead>
+                    <tr>
+                        <th>Назва</th>
+                        <th>Контакти</th>
+                        <th>Компоненти</th>
+                        <th>Лінки</th>
+                        <th>Опис</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="suppliers-body">
+                    <!-- Динамічні дані -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="/project/js/pages/suppliers.js"></script>
+    <script src="/project/js/components/Sidebar.js"></script>
+
+</body>
+</html>
