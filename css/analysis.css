@@ -1,0 +1,32 @@
+.analysis-section {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+    border-radius: 8px;
+}
+
+.drone-details {
+    border: 1px solid #444;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 8px;
+    margin-top: 10px;
+    color: white;
+}
+
+.drone-details img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.drone-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.drone-details li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}

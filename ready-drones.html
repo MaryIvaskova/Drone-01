@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Готові дрони</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar bg-dark text-white">
+                <div class="position-sticky">
+                    <ul class="nav flex-column" id="menu">
+                        <!-- Динамічне меню буде підвантажено через JS -->
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between align-items-center my-4">
+                    <h1>Готові дрони</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#droneModal">Виклик форми</button>
+                </div>
+
+                <!-- Таблиця -->
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Модель</th>
+                                <th>Сума витрат</th>
+                                <th>Складові</th>
+                                <th>Характеристики</th>
+                                <th>Відео стан</th>
+                                <th>Наявність</th>
+                                <th>Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody id="drone-table-body">
+                            <!-- Динамічний контент -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Модальне вікно -->
+    <div class="modal fade" id="droneModal" tabindex="-1" aria-labelledby="droneModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="droneModalLabel">Додати дрон</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="drone-form">
+                        <div class="mb-3">
+                            <label for="model" class="form-label">Модель</label>
+                            <input type="text" id="model" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="components" class="form-label">Складові</label>
+                            <textarea id="components" class="form-control" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="characteristics" class="form-label">Характеристики</label>
+                            <textarea id="characteristics" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="video-status" class="form-label">Відео стан</label>
+                            <input type="file" id="video-status" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="availability" class="form-label">Наявність</label>
+                            <select id="availability" class="form-select" required>
+                                <option value="Немає">Немає</option>
+                                <option value="Наявне">Наявне</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Зберегти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/ready-drones.js"></script>
+</body>
+</html>

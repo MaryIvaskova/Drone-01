@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Постачальники | Управління дронами</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar bg-dark text-white">
+                <div class="position-sticky">
+                    <ul class="nav flex-column" id="menu">
+                        <!-- Меню буде згенероване через JS -->
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between align-items-center my-4">
+                    <h1>Постачальники</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#supplierModal">
+                        Додати постачальника
+                    </button>
+                </div>
+
+                <!-- Таблиця постачальників -->
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Назва</th>
+                                <th>Контакт</th>
+                                <th>Товари</th>
+                                <th>Наявність</th>
+                                <th>Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody id="suppliers-table-body">
+                            <!-- Динамічний контент -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Модальне вікно -->
+    <div class="modal fade" id="supplierModal" tabindex="-1" aria-labelledby="supplierModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="supplierModalLabel">Додати постачальника</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="supplier-form">
+                        <div class="mb-3">
+                            <label for="supplier-name" class="form-label">Назва</label>
+                            <input type="text" id="supplier-name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="supplier-contact" class="form-label">Контакт</label>
+                            <input type="text" id="supplier-contact" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="supplier-items" class="form-label">Товари</label>
+                            <input type="text" id="supplier-items" class="form-control" placeholder="Введіть товари через кому" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="supplier-video" class="form-label">Посилання на відео/фото</label>
+                            <input type="text" id="supplier-video" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Наявність</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="availability" id="availability-yes" value="true" checked>
+                                    <label class="form-check-label" for="availability-yes">Наявне</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="availability" id="availability-no" value="false">
+                                    <label class="form-check-label" for="availability-no">Немає</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" id="save-supplier" class="btn btn-primary">Зберегти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/suppliers.js"></script>
+</body>
+</html>

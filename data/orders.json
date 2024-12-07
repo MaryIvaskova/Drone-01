@@ -1,0 +1,15 @@
+[
+    {
+        "id": 1,
+        "name": "Мотор X",
+        "invoiceNumber": "123456",
+        "deliveryService": "Нова Пошта",
+        "quantity": 10,
+        "category": "Мотори",
+        "priceUAH": 1200,
+        "priceUSD": 32,
+        "deliveryCostUAH": 100,
+        "supplier": "Постачальник 1",
+        "status": "В очікуванні"
+    }
+]

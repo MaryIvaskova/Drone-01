@@ -1,0 +1,130 @@
+/* Основні стилі для таблиць */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #444444;
+}
+
+/* Заголовки таблиць */
+.table th {
+    background-color: #333333;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/* Рядки таблиці */
+.table tbody tr {
+    background-color: #1c1c1c;
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #2b2b2b;
+}
+
+.table tbody tr:hover {
+    background-color: #005f7f;
+}
+
+/* Стилі для особливих рядків */
+.table-danger {
+    background-color: rgba(255, 0, 0, 0.3) !important;
+}
+
+.table-warning {
+    background-color: rgba(255, 255, 0, 0.3) !important;
+}
+
+/* Сумарна вартість (виділення кольором) */
+.table td.total-cost {
+    font-weight: bold;
+    color: #ffaa00;
+}
+
+/* Адаптивність */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Підписи для фільтрів та сортування */
+.table-filters {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.table-filters label {
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.table-filters input, .table-filters select {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: 1px solid #444444;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.table-filters input:focus, .table-filters select:focus {
+    outline: none;
+    border-color: #00aaff;
+    box-shadow: 0 0 5px #00aaff;
+}
+
+/* Кнопки для дій у таблицях */
+.table-actions .btn {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    margin: 0 3px;
+    transition: all 0.3s ease;
+}
+
+.table-actions .btn-warning {
+    background-color: #ffaa00;
+    color: #ffffff;
+    border: none;
+}
+
+.table-actions .btn-warning:hover {
+    background-color: #cc8800;
+}
+
+.table-actions .btn-danger {
+    background-color: #ff4d4d;
+    color: #ffffff;
+    border: none;
+}
+
+.table-actions .btn-danger:hover {
+    background-color: #cc0000;
+}
+
+.table-actions .btn-primary {
+    background-color: #00aaff;
+    color: #ffffff;
+    border: none;
+}
+
+.table-actions .btn-primary:hover {
+    background-color: #008ecc;
+}
+
+/* Заголовки безпеки */
+.no-data {
+    text-align: center;
+    font-size: 1rem;
+    color: #ff4d4d;
+    margin: 20px 0;
+    font-weight: bold;
+}
