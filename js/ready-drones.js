@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const droneTableBody = document.getElementById("drone-table-body");
     const droneForm = document.getElementById("drone-form");
 
+    const selectedComponents = JSON.parse(localStorage.getItem("selectedComponents"));
+console.log(selectedComponents);
+
     // Load drones from LocalStorage
     function loadDrones() {
         const drones = JSON.parse(localStorage.getItem("drones")) || [];

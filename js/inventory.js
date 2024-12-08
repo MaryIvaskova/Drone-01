@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let exchangeRate = 1;
 
+    const selectedComponents = ["Мотор", "Рама"];
+localStorage.setItem("selectedComponents", JSON.stringify(selectedComponents));
+window.location.href = "ready-drones.html";
+
     // Завантаження категорій із JSON
     async function loadCategories() {
         try {

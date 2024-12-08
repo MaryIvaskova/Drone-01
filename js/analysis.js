@@ -4,7 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const drone1Details = document.getElementById("drone1-details");
     const drone2Details = document.getElementById("drone2-details");
 
-    // Load drones from LocalStorage
+    const drones = JSON.parse(localStorage.getItem("drones")) || [];
+console.log(drones);
+
+const compareIds = [1, 2];
+window.location.href = `analysis.html?compareIds=${compareIds.join(",")}`;
+
+
+    // LocalStorage
     function loadDrones() {
         const drones = JSON.parse(localStorage.getItem("drones")) || [];
         const options = drones.map((drone, index) => `<option value="${index}">${drone.model}</option>`).join("");
