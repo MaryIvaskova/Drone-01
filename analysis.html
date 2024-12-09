@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аналіз | Порівняння дронів</title>
+    <title>Аналіз | Управління дронами</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/tables.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -15,34 +16,41 @@
             <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar bg-dark text-white">
                 <div class="position-sticky">
                     <ul class="nav flex-column" id="menu">
-                        <!-- Меню буде завантажене динамічно -->
+                        <!-- Динамічне меню -->
                     </ul>
                 </div>
             </nav>
 
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <h1 class="mt-4">Порівняння дронів</h1>
-                <div class="row my-4">
-                    <!-- Cards Section -->
-                    <div class="col-md-8">
-                        <h3>Доступні дрони</h3>
-                        <div id="drones-list" class="d-flex flex-wrap gap-3">
-                            <!-- Картки дронів -->
+                <h1 class="my-4">Аналіз</h1>
+
+                <!-- Готові дрони -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Готові дрони</h3>
+                        <div id="drone-list" class="list-group">
+                            <!-- Список дронів буде динамічно завантажено -->
                         </div>
                     </div>
 
-                    <!-- Comparison Section -->
-                    <div class="col-md-4">
-                        <h3>Порівняння</h3>
-                        <div id="comparison-area">
-                            <div class="border rounded p-3 mb-3 comparison-slot" data-slot="1">
-                                <h5>Слот 1</h5>
-                                <p class="text-muted">Перетягніть сюди дрон</p>
+                    <!-- Порівняння -->
+                    <div class="col-md-8">
+                        <h3>Порівняння дронів</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="drone1" class="border p-3">
+                                    <h4>Дрон 1</h4>
+                                    <p class="text-muted">Перетягніть сюди дрон для порівняння</p>
+                                    <div id="details-drone1"></div>
+                                </div>
                             </div>
-                            <div class="border rounded p-3 comparison-slot" data-slot="2">
-                                <h5>Слот 2</h5>
-                                <p class="text-muted">Перетягніть сюди дрон</p>
+                            <div class="col-md-6">
+                                <div id="drone2" class="border p-3">
+                                    <h4>Дрон 2</h4>
+                                    <p class="text-muted">Перетягніть сюди дрон для порівняння</p>
+                                    <div id="details-drone2"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -54,5 +62,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/analysis.js"></script>
+    <script src="js/test.js"></script>
+
 </body>
 </html>
