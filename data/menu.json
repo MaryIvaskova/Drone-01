@@ -4,6 +4,7 @@
     { "id": "orders", "name": "Замовлення", "link": "orders.html" },
     { "id": "suppliers", "name": "Постачальники", "link": "suppliers.html" },
     { "id": "needs", "name": "Потреби у дронах", "link": "needs.html" },
+    { "id": "services", "name": "Послуги", "link": "services.html" },
     { "id": "ready-drones", "name": "Готові дрони", "link": "ready-drones.html" },
     { "id": "analysis", "name": "Аналіз", "link": "analysis.html" },
     { "id": "report", "name": "Звіт", "link": "report.html" }

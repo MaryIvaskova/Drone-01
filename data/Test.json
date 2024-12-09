@@ -1,0 +1,90 @@
+[
+    {
+        "id": "SDUA_111111",
+        "alias": "RSvia-01",
+        "costUah": 10520,
+        "totalUah": 13507,
+        "components": {
+            "stack": {
+                "costUah": 2705,
+                "costUsd": 69
+            },
+            "frame": {
+                "costUah": 751,
+                "costUsd": 19
+            },
+            "motors": {
+                "costUah": 2518,
+                "costUsd": 64
+            },
+            "props": {
+                "costUah": 174,
+                "costUsd": 4
+            },
+            "vtx": {
+                "costUah": 2475,
+                "costUsd": 63
+            },
+            "rx": {
+                "costUah": 614,
+                "costUsd": 16
+            },
+            "camera": {
+                "costUah": 933,
+                "costUsd": 24
+            },
+            "lollipop": {
+                "costUah": 349,
+                "costUsd": 9
+            },
+            "battery": {
+                "costUah": 2987,
+                "costUsd": 75
+            }
+        }
+    },
+    {
+        "id": "SDUA_222222",
+        "alias": "RSvia-02",
+        "costUah": 12000,
+        "totalUah": 15000,
+        "components": {
+            "stack": {
+                "costUah": 3000,
+                "costUsd": 80
+            },
+            "frame": {
+                "costUah": 800,
+                "costUsd": 21
+            },
+            "motors": {
+                "costUah": 2600,
+                "costUsd": 66
+            },
+            "props": {
+                "costUah": 200,
+                "costUsd": 5
+            },
+            "vtx": {
+                "costUah": 2500,
+                "costUsd": 65
+            },
+            "rx": {
+                "costUah": 650,
+                "costUsd": 17
+            },
+            "camera": {
+                "costUah": 950,
+                "costUsd": 25
+            },
+            "lollipop": {
+                "costUah": 400,
+                "costUsd": 10
+            },
+            "battery": {
+                "costUah": 3100,
+                "costUsd": 78
+            }
+        }
+    }
+]

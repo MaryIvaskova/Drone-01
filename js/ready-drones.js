@@ -1,80 +1,96 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const droneTableBody = document.getElementById("drone-table-body");
+    const readyDronesKey = "ready-drones";
+    const inventoryKey = "inventory";
+    const servicesKey = "services";
+
     const droneForm = document.getElementById("drone-form");
+    const readyDronesTable = document.getElementById("ready-drones-table");
+    const componentsSelect = document.getElementById("drone-components");
+    const servicesSelect = document.getElementById("drone-services");
 
-    const selectedComponents = JSON.parse(localStorage.getItem("selectedComponents"));
-console.log(selectedComponents);
+    // Завантаження компонентів із інвентарю
+    function loadComponents() {
+        const inventory = JSON.parse(localStorage.getItem(inventoryKey)) || [];
+        const categorizedComponents = inventory.reduce((acc, item) => {
+            acc[item.category] = acc[item.category] || [];
+            acc[item.category].push(item);
+            return acc;
+        }, {});
 
-    // Load drones from LocalStorage
-    function loadDrones() {
-        const drones = JSON.parse(localStorage.getItem("drones")) || [];
-        droneTableBody.innerHTML = drones.map((drone, index) => `
+        componentsSelect.innerHTML = Object.entries(categorizedComponents).map(([category, items]) => `
+            <optgroup label="${category}">
+                ${items.map(item => `<option value="${item.id}" data-name="${item.name}" data-price="${item.price}">${item.name} (${item.quantity})</option>`).join("")}
+            </optgroup>
+        `).join("");
+    }
+
+    // Завантаження послуг
+    function loadServices() {
+        const services = JSON.parse(localStorage.getItem(servicesKey)) || [];
+        servicesSelect.innerHTML = services.map(service => `
+            <option value="${service.name}" data-cost="${service.cost}">${service.name} (${service.cost} грн)</option>
+        `).join("");
+    }
+
+    // Рендеринг таблиці дронів
+    function renderReadyDrones() {
+        const drones = JSON.parse(localStorage.getItem(readyDronesKey)) || [];
+        readyDronesTable.innerHTML = drones.map((drone, index) => `
             <tr>
                 <td>${index + 1}</td>
                 <td>${drone.model}</td>
-                <td>${drone.cost}</td>
-                <td>${drone.components}</td>
-                <td>${drone.characteristics || "—"}</td>
-                <td>${drone.video || "—"}</td>
-                <td>${drone.availability}</td>
+                <td>${drone.components.map(comp => comp.name).join(", ")}</td>
+                <td>${drone.services.map(service => service.name).join(", ")}</td>
+                <td>${drone.cost} грн</td>
                 <td>
-                    <button class="btn btn-sm btn-warning" onclick="editDrone(${index})">Редагувати</button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteDrone(${index})">Видалити</button>
+                    <button class="btn btn-warning btn-sm" onclick="editDrone(${index})">Редагувати</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteDrone(${index})">Видалити</button>
                 </td>
             </tr>
         `).join("");
     }
 
-    // Save drone to LocalStorage
-    function saveDrone(drone) {
-        const drones = JSON.parse(localStorage.getItem("drones")) || [];
-        drones.push(drone);
-        localStorage.setItem("drones", JSON.stringify(drones));
-        loadDrones();
-    }
-
-    // Delete drone
-    window.deleteDrone = function (index) {
-        const drones = JSON.parse(localStorage.getItem("drones")) || [];
-        drones.splice(index, 1);
-        localStorage.setItem("drones", JSON.stringify(drones));
-        loadDrones();
-    };
-
-    // Edit drone
-    window.editDrone = function (index) {
-        const drones = JSON.parse(localStorage.getItem("drones")) || [];
-        const drone = drones[index];
-        droneForm.elements["model"].value = drone.model;
-        droneForm.elements["components"].value = drone.components;
-        droneForm.elements["characteristics"].value = drone.characteristics || "";
-        droneForm.elements["availability"].value = drone.availability;
-
-        drones.splice(index, 1);
-        localStorage.setItem("drones", JSON.stringify(drones));
-    };
-
-    // Handle form submission
+    // Додавання нового дрона
     droneForm.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        const selectedComponents = Array.from(componentsSelect.selectedOptions).map(opt => ({
+            id: opt.value,
+            name: opt.dataset.name,
+            price: parseFloat(opt.dataset.price),
+        }));
+
+        const selectedServices = Array.from(servicesSelect.selectedOptions).map(opt => ({
+            name: opt.value,
+            cost: parseFloat(opt.dataset.cost),
+        }));
+
         const newDrone = {
-            model: droneForm.elements["model"].value,
-            components: droneForm.elements["components"].value,
-            characteristics: droneForm.elements["characteristics"].value || null,
-            video: droneForm.elements["video-status"].value || null,
-            availability: droneForm.elements["availability"].value,
-            cost: calculateCost(droneForm.elements["components"].value)
+            model: document.getElementById("drone-model").value,
+            components: selectedComponents,
+            services: selectedServices,
+            cost: selectedComponents.reduce((sum, comp) => sum + comp.price, 0) + selectedServices.reduce((sum, svc) => sum + svc.cost, 0),
         };
-        saveDrone(newDrone);
+
+        const inventory = JSON.parse(localStorage.getItem(inventoryKey)) || [];
+        selectedComponents.forEach(comp => {
+            const item = inventory.find(i => i.id === comp.id);
+            if (item) item.quantity -= 1; // Зменшуємо кількість в інвентарі
+        });
+
+        localStorage.setItem(inventoryKey, JSON.stringify(inventory));
+        const drones = JSON.parse(localStorage.getItem(readyDronesKey)) || [];
+        drones.push(newDrone);
+        localStorage.setItem(readyDronesKey, JSON.stringify(drones));
+
+        loadComponents(); // Оновлюємо компоненти в модальній формі
+        renderReadyDrones();
         droneForm.reset();
+        bootstrap.Modal.getInstance(document.getElementById("droneModal")).hide();
     });
 
-    // Calculate cost
-    function calculateCost(components) {
-        const componentList = components.split(",");
-        return componentList.length * 500; // Example: 500 грн per component
-    }
-
-    // Initialize
-    loadDrones();
+    // Ініціалізація
+    loadComponents();
+    loadServices();
+    renderReadyDrones();
 });

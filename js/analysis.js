@@ -1,51 +1,60 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const drone1Select = document.getElementById("drone1-select");
-    const drone2Select = document.getElementById("drone2-select");
-    const drone1Details = document.getElementById("drone1-details");
-    const drone2Details = document.getElementById("drone2-details");
+    const dronesKey = "drones";
+    const dronesList = document.getElementById("drones-list");
+    const comparisonSlots = document.querySelectorAll(".comparison-slot");
 
-    const drones = JSON.parse(localStorage.getItem("drones")) || [];
-console.log(drones);
-
-const compareIds = [1, 2];
-window.location.href = `analysis.html?compareIds=${compareIds.join(",")}`;
-
-
-    // LocalStorage
+    // Завантаження дронів із LocalStorage
     function loadDrones() {
-        const drones = JSON.parse(localStorage.getItem("drones")) || [];
-        const options = drones.map((drone, index) => `<option value="${index}">${drone.model}</option>`).join("");
-        drone1Select.innerHTML += options;
-        drone2Select.innerHTML += options;
+        const drones = JSON.parse(localStorage.getItem(dronesKey)) || [];
+        dronesList.innerHTML = drones.map((drone, index) => `
+            <div class="card text-bg-dark p-3" draggable="true" data-index="${index}">
+                <h5 class="card-title">${drone.model}</h5>
+                <p class="card-text">Загальна вартість: ${drone.totalCost} грн</p>
+                <p class="card-text">Компоненти: ${drone.components.map(c => c.name).join(", ")}</p>
+            </div>
+        `).join("");
     }
 
-    // Render drone details
-    function renderDroneDetails(droneIndex, targetElement) {
-        const drones = JSON.parse(localStorage.getItem("drones")) || [];
-        const drone = drones[droneIndex];
-        if (drone) {
-            targetElement.innerHTML = `
-                <img src="${drone.video || 'placeholder.jpg'}" alt="Дрон">
-                <ul>
-                    <li><strong>Модель:</strong> ${drone.model}</li>
-                    <li><strong>Складові:</strong> ${drone.components}</li>
-                    <li><strong>Характеристики:</strong> ${drone.characteristics || '—'}</li>
-                    <li><strong>Сума витрат:</strong> ${drone.cost} грн</li>
-                    <li><strong>Наявність:</strong> ${drone.availability}</li>
-                </ul>
-            `;
-        }
+    // Обробка перетягування
+    function setupDragAndDrop() {
+        const cards = dronesList.querySelectorAll(".card");
+
+        // Початок перетягування
+        cards.forEach(card => {
+            card.addEventListener("dragstart", (e) => {
+                e.dataTransfer.setData("text/plain", card.dataset.index);
+            });
+        });
+
+        // Обробка перетягування в слоти
+        comparisonSlots.forEach(slot => {
+            slot.addEventListener("dragover", (e) => {
+                e.preventDefault();
+            });
+
+            slot.addEventListener("drop", (e) => {
+                e.preventDefault();
+                const index = e.dataTransfer.getData("text/plain");
+                addDroneToSlot(index, slot);
+            });
+        });
     }
 
-    // Event listeners for selects
-    drone1Select.addEventListener("change", () => {
-        renderDroneDetails(drone1Select.value, drone1Details);
-    });
+    // Додавання дрона до слоту
+    function addDroneToSlot(index, slot) {
+        const drones = JSON.parse(localStorage.getItem(dronesKey)) || [];
+        const drone = drones[index];
 
-    drone2Select.addEventListener("change", () => {
-        renderDroneDetails(drone2Select.value, drone2Details);
-    });
+        slot.innerHTML = `
+            <h5>${drone.model}</h5>
+            <p>Загальна вартість: ${drone.totalCost} грн</p>
+            <ul>
+                ${drone.components.map(c => `<li>${c.name} (${c.quantity} шт.)</li>`).join("")}
+            </ul>
+        `;
+    }
 
-    // Initialize
+    // Ініціалізація
     loadDrones();
+    setupDragAndDrop();
 });

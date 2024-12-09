@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Звіт | Дрони</title>
+    <title>Звіт | Управління дронами</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/report.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -16,32 +15,53 @@
             <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar bg-dark text-white">
                 <div class="position-sticky">
                     <ul class="nav flex-column" id="menu">
-                        <!-- Динамічне меню -->
+                        <!-- Меню -->
                     </ul>
                 </div>
             </nav>
 
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <h1 class="mt-4">Звіт про витрати</h1>
+                
                 <div class="d-flex justify-content-between align-items-center my-4">
-                    <h1>Звіт</h1>
+                    <div>
+                        <label for="month-select" class="form-label">Оберіть місяць</label>
+                        <select id="month-select" class="form-select w-auto">
+                            <!-- Місяці -->
+                        </select>
+                    </div>
+                    <button id="export-csv" class="btn btn-primary">Експортувати CSV</button>
                 </div>
-                <div class="report-section">
-                    <h2>Статистика</h2>
-                    <div class="report-item">
-                        <span>Кількість дронів:</span>
-                        <strong id="total-drones">0</strong>
-                    </div>
-                    <div class="report-item">
-                        <span>Загальні витрати:</span>
-                        <strong id="total-cost">0 грн</strong>
-                    </div>
+
+                <!-- Таблиця витрат -->
+                <div class="table-responsive mb-4">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>Назва дрона</th>
+                                <th>Категорія</th>
+                                <th>Компонент</th>
+                                <th>Кількість</th>
+                                <th>Вартість за одиницю</th>
+                                <th>Загальна вартість</th>
+                            </tr>
+                        </thead>
+                        <tbody id="report-table">
+                            <!-- Динамічний контент -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Графік -->
+                <div>
+                    <canvas id="expenses-chart" height="100"></canvas>
                 </div>
             </main>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/report.js"></script>
 </body>
