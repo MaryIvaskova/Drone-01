@@ -33,18 +33,20 @@
 
                 <!-- Готові Дрони -->
                 <div class="table-responsive">
-                    <table class="table table-dark table-striped">
+                    <table class="table table-dark table-striped" id="ready-drones-table">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Назва</th>
-                                <th>Ціна (грн)</th>
-                                <th>Компоненти</th>
+                                <th>Складові</th>
+                                <th>Ціна</th>
                                 <th>Послуги</th>
+                                <th>Опис</th>
+                                <th>Фото</th>
                                 <th>Дії</th>
                             </tr>
                         </thead>
-                        <tbody id="ready-drones-table">
+                        <tbody>
                             <!-- Динамічний контент -->
                         </tbody>
                     </table>
@@ -67,6 +69,11 @@
                             <label for="drone-name" class="form-label">Назва Дрону</label>
                             <input type="text" id="drone-name" class="form-control" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="drone-description" class="form-label">Опис</label>
+                            <textarea id="drone-description" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
     
                         <!-- Компоненти -->
                         <div class="mb-3">

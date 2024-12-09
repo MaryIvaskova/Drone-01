@@ -66,7 +66,28 @@ document.addEventListener("DOMContentLoaded", async () => {
             </tr>
         `).join("");
     }
-
+    window.editOrder = function (index) {
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+        const order = orders[index];
+    
+        // Заповнюємо форму
+        const form = document.getElementById("order-form");
+        form.elements["order-name"].value = order.name;
+        form.elements["order-invoice"].value = order.invoice;
+        form.elements["delivery-service"].value = order.deliveryService;
+        form.elements["order-quantity"].value = order.quantity;
+        form.elements["order-category"].value = order.category;
+        form.elements["order-price"].value = order.priceUAH;
+        form.elements["delivery-price"].value = order.deliveryPrice;
+        form.elements["order-supplier"].value = order.supplier;
+    
+        // Видаляємо замовлення для редагування
+        orders.splice(index, 1);
+        localStorage.setItem("orders", JSON.stringify(orders));
+        renderOrders();
+    
+        bootstrap.Modal.getInstance(document.getElementById("orderModal")).show();
+    };
     // Оновлення таблиці браку
     function renderDefects() {
         const defects = JSON.parse(localStorage.getItem(defectsKey)) || [];
